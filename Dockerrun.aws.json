@@ -5,14 +5,24 @@
   ],
   "containerDefinitions": [
     {
-      "name": "ghost",
-      "image": "ghost",
+      "name": "nginx",
+      "image": "nginx",
+      "links": [
+        "ghost"
+      ],
       "portMappings": [
         {
           "hostPort": 80,
-          "containerPort": 2368
+          "containerPort": 80
         }
       ],
+      "memory": 64
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "ghost",
+      "image": "ghost",
       "memory": 64
     }
   ]
