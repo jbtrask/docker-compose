@@ -5,8 +5,14 @@
   ],
   "containerDefinitions": [
     {
-      "name": "ubuntu",
-      "image": "ubuntu",
+      "name": "ghost",
+      "image": "ghost",
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 2368
+        }
+      ],
       "memory": 64
     }
   ]
