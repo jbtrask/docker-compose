@@ -19,9 +19,10 @@ services:
       - ./apps/rails:/rails
 
   nginx:
-    build: nginx
+    image: nginx
     volumes:
       - ./apps/html:/usr/share/nginx/html   
+      - ./nginx:/etc/nginx/conf.d
     links:
       - rails
       - wordpress
