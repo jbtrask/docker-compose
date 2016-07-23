@@ -1,0 +1,49 @@
+version: '2'
+services:
+
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./apps/mysql:/var/lib/mysql
+
+  rails:
+    build: ./apps/rails
+    command: bin/rails server --port 3000 --binding 0.0.0.0
+    links:
+      - db
+    expose:
+      - "3000"
+    volumes:
+      - ./apps/rails:/rails
+
+  nginx:
+    build: nginx
+    volumes:
+      - ./apps/html:/usr/share/nginx/html   
+    links:
+      - rails
+      - wordpress
+      - ghost   
+    ports:
+      - "80:80"
+
+  wordpress:
+    image: wordpress
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_PASSWORD=password
+    links:
+      - db
+    volumes:
+      - ./apps/wordpress:/var/www/html  
+
+  ghost:
+    image: ghost
+    expose: 
+      - "2368"
+    volumes:
+      - ./apps/ghost:/var/lib/ghost  
+
