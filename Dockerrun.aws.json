@@ -1,43 +1,11 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "volumes": [
-    {
-      "name": "nginx",
-      "host": {
-        "sourcePath": "/var/app/current/nginx"
-      }
-    },
-    {
-      "name": "html",
-      "host": {
-        "sourcePath": "/var/app/current/apps/html"
-      }
-    },
-    {
-      "name": "ghost",
-      "host": {
-        "sourcePath": "/var/app/current/apps/ghost"
-      }
-    }
-  ],
+  "volumes": [],
   "containerDefinitions": [
     {
-      "name": "ghost",
-      "image": "ghost",
-      "memory": 64,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 2368
-        }
-      ],
-      "mountPoints": [
-        {
-          "sourceVolume": "ghost",
-          "containerPath": "/var/lib/ghost",
-          "readOnly": true
-        }
-      ]
+      "name": "ubuntu",
+      "image": "ubuntu",
+      "memory": 64
     }
   ]
 }
