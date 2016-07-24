@@ -1,6 +1,5 @@
-apps/mysql
 apps/rails
-apps/wordpress
+apps/mysql
 
 .ruby-*
 .DS_Store
