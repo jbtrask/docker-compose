@@ -24,7 +24,7 @@
     {
       "name": "nginx",
       "image": "nginx",
-      "memory": 64,
+      "memory": 128,
       "links": [
         "ghost"
       ],
@@ -54,10 +54,9 @@
     {
       "name": "ghost",
       "image": "ghost",
-      "memory": 64,
+      "memory": 128,
       "portMappings": [
         {
-          "hostPort": 2368,
           "containerPort": 2368
         }
       ],
