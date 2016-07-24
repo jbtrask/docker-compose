@@ -12,39 +12,15 @@
       "host": {
         "sourcePath": "/var/app/current/apps/html"
       }
+    },
+    {
+      "name": "ghost",
+      "host": {
+        "sourcePath": "/var/app/current/apps/ghost"
+      }
     }
   ],
   "containerDefinitions": [
-    {
-      "name": "nginx",
-      "image": "nginx",
-      "memory": 64,
-      "links": [
-        "ghost"
-      ],
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ],
-      "mountPoints": [
-        {
-          "sourceVolume": "html",
-          "containerPath": "/var/www/html",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "nginx",
-          "containerPath": "/etc/nginx/conf.d",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "awseb-logs-nginx",
-          "containerPath": "/var/log/nginx"
-        }
-      ]
-    },
     {
       "name": "ghost",
       "image": "ghost",
@@ -57,7 +33,7 @@
       ],
       "mountPoints": [
         {
-          "sourceVolume": "ghpst",
+          "sourceVolume": "ghost",
           "containerPath": "/var/lib/ghost",
           "readOnly": true
         }
