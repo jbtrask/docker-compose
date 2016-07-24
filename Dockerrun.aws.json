@@ -2,6 +2,12 @@
   "AWSEBDockerrunVersion": 2,
   "volumes": [
     {
+      "name": "nginx",
+      "host": {
+        "sourcePath": "/var/app/current/nginx"
+      }
+    },
+    {
       "name": "html",
       "host": {
         "sourcePath": "/var/app/current/apps/html"
@@ -12,6 +18,7 @@
     {
       "name": "nginx",
       "image": "nginx",
+      "memory": 64,
       "links": [
         "ghost"
       ],
@@ -26,12 +33,18 @@
           "sourceVolume": "html",
           "containerPath": "/var/www/html",
           "readOnly": true
+        },
+        {
+          "sourceVolume": "nginx",
+          "containerPath": "/etc/nginx/conf.d",
+          "readOnly": true
+        },
+        {
+          "sourceVolume": "awseb-logs-nginx",
+          "containerPath": "/var/log/nginx"
         }
-      ],
-      "memory": 64
-    }
-  ],
-  "containerDefinitions": [
+      ]
+    },
     {
       "name": "ghost",
       "image": "ghost",
