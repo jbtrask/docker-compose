@@ -18,6 +18,12 @@
       "host": {
         "sourcePath": "/var/app/current/apps/ghost"
       }
+    },
+    {
+      "name": "mysql",
+      "host": {
+        "sourcePath": "/var/app/current/apps/mysql"
+      }
     }
   ],
   "containerDefinitions": [
@@ -64,6 +70,28 @@
         {
           "sourceVolume": "ghost",
           "containerPath": "/var/lib/ghost"
+        }
+      ]
+    },
+    {
+      "name": "db",
+      "image": "mysql",
+      "memory": 128,
+      "portMappings": [
+        {
+          "containerPort": 3306
+        }
+      ],
+      "environment":[
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "value": "password"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "mysql",
+          "containerPath": "/var/lib/mysql"
         }
       ]
     }
