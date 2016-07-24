@@ -48,7 +48,10 @@
     {
       "name": "ghost",
       "image": "ghost",
-      "memory": 64
+      "memory": 64,
+      "links": [
+        "nginx"
+      ]
     }
   ]
 }
