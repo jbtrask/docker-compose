@@ -12,6 +12,12 @@
       "host": {
         "sourcePath": "/var/app/current/apps/html"
       }
+    },
+    {
+      "name": "ghost",
+      "host": {
+        "sourcePath": "/var/app/current/apps/ghost"
+      }
     }
   ],
   "containerDefinitions": [
@@ -49,17 +55,10 @@
       "name": "ghost",
       "image": "ghost",
       "memory": 64,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 2368
-        }
-      ],
       "mountPoints": [
         {
-          "sourceVolume": "ghpst",
-          "containerPath": "/var/lib/ghost",
-          "readOnly": true
+          "sourceVolume": "ghost",
+          "containerPath": "/var/lib/ghost"
         }
       ]
     }
