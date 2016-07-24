@@ -49,8 +49,18 @@
       "name": "ghost",
       "image": "ghost",
       "memory": 64,
-      "links": [
-        "nginx"
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 2368
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "ghpst",
+          "containerPath": "/var/lib/ghost",
+          "readOnly": true
+        }
       ]
     }
   ]
