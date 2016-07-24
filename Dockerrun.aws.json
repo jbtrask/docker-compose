@@ -1,7 +1,12 @@
 {
   "AWSEBDockerrunVersion": 2,
   "volumes": [
-    
+    {
+      "name": "html",
+      "host": {
+        "sourcePath": "/var/app/current/apps/html"
+      }
+    }
   ],
   "containerDefinitions": [
     {
@@ -14,6 +19,13 @@
         {
           "hostPort": 80,
           "containerPort": 80
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "html",
+          "containerPath": "/var/www/html",
+          "readOnly": true
         }
       ],
       "memory": 64
