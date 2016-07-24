@@ -55,6 +55,12 @@
       "name": "ghost",
       "image": "ghost",
       "memory": 64,
+      "portMappings": [
+        {
+          "hostPort": 2368,
+          "containerPort": 2368
+        }
+      ],
       "mountPoints": [
         {
           "sourceVolume": "ghost",
