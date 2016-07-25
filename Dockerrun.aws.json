@@ -30,7 +30,7 @@
     {
       "name": "nginx",
       "image": "nginx",
-      "memory": 128,
+      "memory": 64,
       "links": [
         "ghost"
       ],
@@ -60,7 +60,7 @@
     {
       "name": "db",
       "image": "mysql",
-      "memory": 128,
+      "memory": 256,
       "portMappings": [
         {
           "containerPort": 3306
@@ -82,7 +82,7 @@
     {
       "name": "ghost",
       "image": "ghost",
-      "memory": 128,
+      "memory": 256,
       "portMappings": [
         {
           "containerPort": 2368
