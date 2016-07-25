@@ -18,7 +18,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
     volumes:
-      - ./apps/mysql:/var/lib/mysql
+      - ${HOME}/.docker-apps/mysql:/var/lib/mysql
 
   rails:
     build: ./apps/rails
