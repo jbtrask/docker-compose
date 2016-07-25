@@ -42,7 +42,7 @@
     {
       "name": "nginx",
       "image": "nginx",
-      "memory": 128,
+      "memory": 256,
       "links": [
         "wordpress"
       ],
@@ -95,7 +95,7 @@
       "name": "wordpress",
       "image": "wordpress",
       "essential": true,
-      "memory": 64,
+      "memory": 128,
       "links": [
         "db"
       ],
