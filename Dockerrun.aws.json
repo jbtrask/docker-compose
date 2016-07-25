@@ -50,6 +50,22 @@
           "containerPath": "/var/log/nginx"
         }
       ]
+    },
+    {
+      "name": "ghost",
+      "image": "ghost",
+      "memory": 128,
+      "portMappings": [
+        {
+          "containerPort": 2368
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "ghost",
+          "containerPath": "/var/lib/ghost"
+        }
+      ]
     }
   ]
 }
