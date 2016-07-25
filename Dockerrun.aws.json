@@ -24,6 +24,12 @@
       "host": {
         "sourcePath": "/var/lib/mysql"
       }
+    },
+    {
+      "name": "wordpress",
+      "host": {
+        "sourcePath": "/var/lib/wordpress"
+      }
     }
   ],
   "containerDefinitions": [
@@ -32,7 +38,8 @@
       "image": "nginx",
       "memory": 64,
       "links": [
-        "ghost"
+        "ghost",
+        "wordpress"
       ],
       "portMappings": [
         {
@@ -92,6 +99,40 @@
         {
           "sourceVolume": "ghost",
           "containerPath": "/var/lib/ghost"
+        }
+      ]
+    },
+    {
+      "name": "wordpress",
+      "image": "wordpress",
+      "essential": true,
+      "memory": 256,
+      "links": [
+        "db"
+      ],
+      "portMappings": [
+        {
+          "containerPort": 80
+        }
+      ],
+      "environment": [
+        {
+          "name": "WORDPRESS_DB_HOST",
+          "value": "db"
+        },
+        {
+          "name": "WORDPRESS_DB_NAME",
+          "value": "wordpress"
+        },
+        {
+          "name": "WORDPRESS_DB_PASSWORD",
+          "value": "password"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "wordpress",
+          "containerPath": "/var/www/html"
         }
       ]
     }
