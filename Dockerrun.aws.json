@@ -12,6 +12,12 @@
       "host": {
         "sourcePath": "/var/app/current/apps/html"
       }
+    },
+    {
+      "name": "ghost",
+      "host": {
+        "sourcePath": "/var/lib/ghost"
+      }
     }
   ],
   "containerDefinitions": [
@@ -19,6 +25,9 @@
       "name": "nginx",
       "image": "nginx",
       "memory": 128,
+      "links": [
+        "ghost"
+      ],
       "portMappings": [
         {
           "hostPort": 80,
