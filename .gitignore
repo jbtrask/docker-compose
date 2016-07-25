@@ -1,6 +1,3 @@
-apps/rails
-apps/mysql
-
 .ruby-*
 .DS_Store
 
