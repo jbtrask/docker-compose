@@ -1,6 +1,18 @@
 version: '2'
 services:
 
+  nginx:
+    image: nginx
+    volumes:
+      - ./apps/html:/var/www/html   
+      - ./nginx:/etc/nginx/conf.d
+    links:
+      - rails
+      - wordpress
+      - ghost   
+    ports:
+      - "80:80"
+
   db:
     image: mysql
     environment:
@@ -18,18 +30,6 @@ services:
     volumes:
       - ./apps/rails:/rails
 
-  nginx:
-    image: nginx
-    volumes:
-      - ./apps/html:/usr/share/nginx/html   
-      - ./nginx:/etc/nginx/conf.d
-    links:
-      - rails
-      - wordpress
-      - ghost   
-    ports:
-      - "80:80"
-
   wordpress:
     image: wordpress
     environment:
@@ -39,12 +39,12 @@ services:
     links:
       - db
     volumes:
-      - ./apps/wordpress:/var/www/html  
+      - ${HOME}/.docker-apps/wordpress:/var/www/html  
 
   ghost:
     image: ghost
     expose: 
       - "2368"
     volumes:
-      - ./apps/ghost:/var/lib/ghost  
+      - ${HOME}/.docker-apps/ghost:/var/lib/ghost  
 
