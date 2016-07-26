@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginx
     volumes:
-      - ./apps/html:/var/www/html   
+      - ${HOME}/.docker-apps/html:/var/www/html   
       - ./nginx:/etc/nginx/conf.d
     links:
       - rails
@@ -21,14 +21,14 @@ services:
       - ${HOME}/.docker-apps/mysql:/var/lib/mysql
 
   rails:
-    build: ./apps/rails
+    build: ${HOME}/.docker-apps/rails
     command: bin/rails server --port 3000 --binding 0.0.0.0
     links:
       - db
     expose:
       - "3000"
     volumes:
-      - ./apps/rails:/rails
+      - ${HOME}/.docker-apps/rails:/rails
 
   wordpress:
     image: wordpress
